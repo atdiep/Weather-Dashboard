@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+    <header>
+        Weather Dashboard
+    </header>
+
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 bg-light">
+                    <div class="form-group">
+                        <div>
+                            <label for="city">Search for a City:</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="search" class="form-control" id="city-input">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary" id="find-city"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <ul class="list-group" id="cityList">
+                            <li>Test</li>
+                            <li>Test</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <span id="currCity"></span>
+                                        <span id="today"></span>
+                                        <img src="" alt="" id="currWeatherIcon" />
+                                    </h3>
+                                    <ul class="card-text">
+                                        <li>Temperature: <span id="currTemp"></span> &degF</li>
+                                        <li>Humidity: <span id="currHumid"></span> %</li>
+                                        <li>Wind Speed: <span id="currWind"></span> MPH</li>
+                                        <li>UV Index: <span class="border d-inline-flex rounded px-2 py-1"
+                                                id="currUVI"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="forecastWeather">
+                        <h5 id="forecastTitle">5-Day Forecast:</h5>
+                        <div id="fivedays">Test
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
