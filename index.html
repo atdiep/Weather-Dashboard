@@ -34,25 +34,25 @@
                             </div>
                         </div>
                         <ul class="list-group" id="cityList">
-                            <li>Test</li>
-                            <li>Test</li>
+                            <li class="list-group-item-active"></li>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-sm-7">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="card">
+                            <div class="card" style="border-right: none">
                                 <div class="card-body">
                                     <h3 class="card-title">
                                         <span id="currCity"></span>
                                         <span id="today"></span>
                                         <img src="" alt="" id="currWeatherIcon" />
                                     </h3>
-                                    <ul class="card-text">
-                                        <li>Temperature: <span id="currTemp"></span> &degF</li>
-                                        <li>Humidity: <span id="currHumid"></span> %</li>
-                                        <li>Wind Speed: <span id="currWind"></span> MPH</li>
+                                    <ul class="card-text" style="padding: 0">
+                                        <li>Temperature: <span id="currTemp"></span> &degF</li><br>
+                                        <li>Humidity: <span id="currHumid"></span> %</li><br>
+                                        <li>Wind Speed: <span id="currWind"></span> MPH</li><br>
                                         <li>UV Index: <span class="border d-inline-flex rounded px-2 py-1"
                                                 id="currUVI"></span></li>
                                     </ul>
@@ -62,8 +62,7 @@
                     </div>
                     <div id="forecastWeather">
                         <h5 id="forecastTitle">5-Day Forecast:</h5>
-                        <div id="fivedays">Test
-
+                        <div id="fivedays">
                         </div>
                     </div>
                 </div>
