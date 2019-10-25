@@ -1,6 +1,32 @@
 const APIkey = "7355be66530e4602bd067e7287df0297";
 const proxy = "https://cors-anywhere.herokuapp.com/"
 
+window.addEventListener("load", function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lon = position.coords.longitude;
+            const lat = position.coords.latitude;
+            console.log(position)
+            runLandingPage(lon, lat);
+        });
+    }
+});
+
+function runLandingPage(lon, lat) {
+    var landingURL = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&APPID=${APIkey}`
+
+    $.ajax({
+        url: landingURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response)
+        let city = response.name;
+        getFullCurrentData(response);
+        fiveForecast(city);
+    })
+
+}
+
 $("#find-city").on("click", function (event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
@@ -82,8 +108,8 @@ function fiveForecast(city) {
         for (var i = 0; i < forecastData.length; i += 8) {
             console.log(forecastData[i])
             let colDiv = $("<div class='col-sm' </div>");
-            let cardDiv = $("<div class='card' </div>");
-            let cardBodyDiv = $("<div class='card-body' </div>");
+            let cardDiv = $("<div class='card inline-block justify-content-left' </div>");
+            let cardBodyDiv = $("<div class='card-body bg-primary text-white' </div>");
             cardDiv.append(cardBodyDiv);
             colDiv.append(cardDiv);
             $("#fivedays").append(colDiv);
@@ -117,7 +143,7 @@ function fiveForecast(city) {
 }
 
 function addCity(city) {
-    let cityListEl = $("<li class='list-group-item active'>" + city + "</li>")
+    let cityListEl = $("<li class='list-group-item'>" + city + "</li>")
     cityListEl.on("click", function (event) {
         event.preventDefault();
         var queryURL = `${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
