@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
 });
 
 function runLandingPage(lon, lat) {
-    var landingURL = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&APPID=${APIkey}`
+    var landingURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&APPID=${APIkey}`
 
     $.ajax({
         url: landingURL,
@@ -30,7 +30,7 @@ function runLandingPage(lon, lat) {
 $("#find-city").on("click", function (event) {
     event.preventDefault();
     var city = $("#city-input").val().trim();
-    var queryURL = `${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
 
     $.ajax({
         url: queryURL,
@@ -49,7 +49,7 @@ function getFullCurrentData(response) {
     console.log(response);
     let cityName = response.name;
     let todayDate = moment(new Date()).format("MM/DD/YYYY");
-    let weatherIcon = `http://openweathermap.org/img/w/${response.weather[0].icon}.png`;
+    let weatherIcon = `https://openweathermap.org/img/w/${response.weather[0].icon}.png`;
     let temp = response.main.temp;
     let humidity = response.main.humidity;
     let windSpeed = response.wind.speed;
@@ -70,7 +70,7 @@ function getFullCurrentData(response) {
 }
 
 function getUVIndex(lon, lat) {
-    var UVIURL = `${proxy}api.openweathermap.org/data/2.5/uvi?appid=${APIkey}&lat=${lat}&lon=${lon}`
+    var UVIURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIkey}&lat=${lat}&lon=${lon}`
 
     $.ajax({
         url: UVIURL,
@@ -97,7 +97,7 @@ function fiveForecast(city) {
 
     $("#fivedays").empty();
 
-    var forcastURL = `${proxy}api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${APIkey}`
+    var forcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${APIkey}`
 
     $.ajax({
         url: forcastURL,
@@ -122,7 +122,7 @@ function fiveForecast(city) {
             console.log(date)
 
             let imgEl = $("<img>");
-            let weatherIcon = `http://openweathermap.org/img/w/${forecastData[i].weather[0].icon}.png`
+            let weatherIcon = `https://openweathermap.org/img/w/${forecastData[i].weather[0].icon}.png`
             imgEl.attr("src", weatherIcon)
             cardBodyDiv.append(imgEl)
             console.log(weatherIcon)
@@ -146,7 +146,7 @@ function addCity(city) {
     let cityListEl = $("<li class='list-group-item'>" + city + "</li>");
     cityListEl.on("click", function (event) {
         event.preventDefault();
-        var queryURL = `${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
+        var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
 
         $.ajax({
             url: queryURL,
