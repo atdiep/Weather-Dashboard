@@ -1,15 +1,15 @@
 const APIkey = "7355be66530e4602bd067e7287df0297";
 const proxy = "https://cors-anywhere.herokuapp.com/"
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             const lon = position.coords.longitude;
             const lat = position.coords.latitude;
             console.log(position)
             runLandingPage(lon, lat);
         });
-    }
+    };
 });
 
 function runLandingPage(lon, lat) {
@@ -88,8 +88,8 @@ function getUVIndex(lon, lat) {
         } else if (UVIndex < 11) {
             $("#currUVI").addClass("uv-vhigh");
         } else {
-            $("#currUVI").addClass("uv-extreme")
-        }
+            $("#currUVI").addClass("uv-extreme");
+        };
     });
 };
 
@@ -138,12 +138,12 @@ function fiveForecast(city) {
             humidDiv.text("Humidity: " + humidity + "%");
             cardBodyDiv.append(humidDiv);
 
-        }
-    })
-}
+        };
+    });
+};
 
 function addCity(city) {
-    let cityListEl = $("<li class='list-group-item'>" + city + "</li>")
+    let cityListEl = $("<li class='list-group-item'>" + city + "</li>");
     cityListEl.on("click", function (event) {
         event.preventDefault();
         var queryURL = `${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${APIkey}`;
@@ -155,9 +155,9 @@ function addCity(city) {
             console.log(response);
             getFullCurrentData(response);
             fiveForecast(city);
-            
+
         });
-    })
+    });
     $("#cityList").append(cityListEl)
-}
+};
 
